@@ -1,4 +1,4 @@
-package com.clock.panel;
+package com.company.analog;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -41,8 +41,12 @@ public class SimpleClockPanel extends JPanel {
 
 	private int textSize;
 
+	private float resize;
+
 	public void setNumberColor(Color numberColor) {
+
 		this.numberColor = numberColor;
+
 	}
 
 	public void setTextSize(int textSize) {
@@ -51,25 +55,25 @@ public class SimpleClockPanel extends JPanel {
 
 	}
 
-	public SimpleClockPanel() {
+	public SimpleClockPanel(float resize, Color hour, Color minute, Color second, Color number, Color background) {
+
+		this.resize = resize;
 
 		this.textSize = 14;
 
-		this.hourColor = Color.BLACK;
+		this.hourColor = hour;
 
-		this.minuteColor = Color.BLACK;
+		this.minuteColor = minute;
 
-		this.secondsColor = Color.BLACK;
+		this.secondsColor = second;
 
 		this.circleColor = Color.WHITE;
 
-		this.numberColor = Color.BLACK;
+		this.numberColor = number;
 
 		this.width = 100;
 
 		this.height = 100;
-
-		setSize(width, height);
 
 		timer = new Timer(500, new ActionListener() {
 
@@ -111,6 +115,12 @@ public class SimpleClockPanel extends JPanel {
 
 	public void update(Graphics g) {
 
+		Graphics2D g2 = (Graphics2D) g;
+
+		g2.translate(5, 5);
+
+		g2.scale(this.resize, this.resize);
+
 		calendar = Calendar.getInstance();
 
 		int hour = calendar.get(Calendar.HOUR);
@@ -126,8 +136,6 @@ public class SimpleClockPanel extends JPanel {
 		int w = width;
 
 		int h = height;
-
-		g.setColor(Color.black);
 
 		int resto = 0;
 
@@ -147,11 +155,11 @@ public class SimpleClockPanel extends JPanel {
 
 		String str = "9";
 
-		g.drawString(str, 5, ((h / 2) + resto) + 5);
+		g.drawString(str, 5, ((h / 2) + resto) + 4);
 
 		str = "3";
 
-		g.drawString(str, w - 15, ((h / 2) + resto) + 5);
+		g.drawString(str, w - 15, ((h / 2) + resto) + 4);
 
 		str = "6";
 
@@ -197,7 +205,7 @@ public class SimpleClockPanel extends JPanel {
 
 		g.setColor(hourColor);
 
-		drawLine(g, (hour + minute / 60.0) * 360 / 12 * Math.PI / 180, ((this.width / 2) - 25));
+		drawLine(g, (hour + minute / 60.0) * 360 / 12 * Math.PI / 180, ((this.width / 2) - 20));
 
 		g.setColor(minuteColor);
 
