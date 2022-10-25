@@ -116,8 +116,8 @@ public class Ventana extends javax.swing.JFrame {
 
 		panel_1.setRomano(true);
 
-		Clock panel_1_1 = new Clock(Color.WHITE, Color.RED, Color.WHITE, Color.GREEN, Color.WHITE, Color.ORANGE,
-				Color.PINK, Color.YELLOW, Color.ORANGE);
+		Clock panel_1_1 = new Clock(Color.red, Color.black, Color.green, Color.black, Color.ORANGE, Color.PINK,
+				Color.YELLOW, Color.ORANGE);
 
 		SimpleClockPanel panel_1_2 = new SimpleClockPanel(1f, Color.BLUE, Color.GREEN, Color.ORANGE, Color.BLACK,
 				new Color(255, 78, 83));

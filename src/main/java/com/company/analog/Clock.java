@@ -17,6 +17,7 @@ import javax.swing.JComponent;
 
 import shadow.ShadowRenderer;
 
+@SuppressWarnings("serial")
 public class Clock extends JComponent {
 
 	private BufferedImage background;
@@ -35,9 +36,7 @@ public class Clock extends JComponent {
 
 	private Color minuteColor2;
 
-	private Color secondColor1;
-
-	private Color secondColor2;
+	private Color secondColor;
 
 	private Color centerColor;
 
@@ -45,8 +44,8 @@ public class Clock extends JComponent {
 
 	private Color lineMinute2;
 
-	public Clock(Color hourColor1, Color hourColor2, Color minuteColor1, Color minuteColor2, Color secondColor1,
-			Color secondColor2, Color centerColor, Color lineminute1, Color lineminute2) {
+	public Clock(Color hourColor1, Color hourColor2, Color minuteColor1, Color minuteColor2, Color secondColor,
+			Color centerColor, Color lineminute1, Color lineminute2) {
 
 		this.hourColor1 = hourColor1;
 
@@ -56,9 +55,7 @@ public class Clock extends JComponent {
 
 		this.minuteColor2 = minuteColor2;
 
-		this.secondColor1 = secondColor1;
-
-		this.secondColor2 = secondColor2;
+		this.secondColor = secondColor;
 
 		this.centerColor = centerColor;
 
@@ -250,7 +247,7 @@ public class Clock extends JComponent {
 
 		Point pointStart = getLocationOf(angle + 180, 20);
 
-		g2.setColor(secondColor2);
+		g2.setColor(secondColor);
 
 		g2.drawLine(centerX, centerY, centerX + point.x, centerY - point.y);
 

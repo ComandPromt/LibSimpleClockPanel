@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import com.company.MaterialDigitalClock.Language;
 
+@SuppressWarnings("serial")
 public class MaterialDate extends JPanel implements Runnable {
 
 	JLabel diaSemana;
@@ -103,7 +104,7 @@ public class MaterialDate extends JPanel implements Runnable {
 		mes.setHorizontalAlignment(JTextField.CENTER);
 
 		diaSemana.setHorizontalAlignment(JTextField.CENTER);
-		
+
 		setBackground(background);
 
 		JPanel panel = new JPanel();

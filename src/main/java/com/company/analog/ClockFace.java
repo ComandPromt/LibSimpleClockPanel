@@ -19,6 +19,7 @@ import java.util.Calendar;
 import javax.swing.JComponent;
 import javax.swing.Timer;
 
+@SuppressWarnings("serial")
 public class ClockFace extends JComponent {
 
 	private Stroke border;

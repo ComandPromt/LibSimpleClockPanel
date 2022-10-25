@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import com.company.MaterialDigitalClock.Language;
 
+@SuppressWarnings("serial")
 public class TextClock extends JPanel implements Runnable {
 
 	JLabel hour;

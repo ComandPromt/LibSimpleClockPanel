@@ -11,12 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class SimpleDigitalClock extends JPanel implements Runnable {
 
 	private JLabel bb = new JLabel();
 
 	private String timeString = "";
 
+	@Override
 	public void setFont(Font font) {
 
 		if (bb != null) {

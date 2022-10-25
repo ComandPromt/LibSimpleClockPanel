@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 
 import com.company.MaterialDigitalClock.Language;
 
+@SuppressWarnings("serial")
+
 public class TextDate extends JPanel implements Runnable {
 
 	JLabel diaSemana;
