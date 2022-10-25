@@ -13,13 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 @SuppressWarnings("serial")
+
 public class ClockPanel extends JPanel {
 
 	private Calendar calendar;
-
-	private int x0 = 0;
-
-	private int y0 = 0;
 
 	private Timer timer;
 
@@ -35,7 +32,11 @@ public class ClockPanel extends JPanel {
 
 	private Color secondsColor;
 
-	private int textSize;
+	private Color borderColor;
+
+	private Color centerColor;
+
+	private Color backgroundColor;
 
 	private int secondX, secondY, minuteX, minuteY, hourX, hourY;
 
@@ -47,15 +48,14 @@ public class ClockPanel extends JPanel {
 
 	}
 
-	public void setTextSize(int textSize) {
+	public ClockPanel(Color backgroundColor, Color hour, Color minute, Color second, Color number, Color borderColor,
+			Color centerColor, int width, int height) {
 
-		this.textSize = textSize;
+		this.backgroundColor = backgroundColor;
 
-	}
+		this.centerColor = centerColor;
 
-	public ClockPanel(Color hour, Color minute, Color second, Color number, Color background, int width, int height) {
-
-		this.textSize = 14;
+		this.borderColor = borderColor;
 
 		this.hourColor = hour;
 
@@ -68,8 +68,6 @@ public class ClockPanel extends JPanel {
 		this.width = width;
 
 		this.height = height;
-
-		setBackground(background);
 
 		timer = new Timer(500, new ActionListener() {
 
@@ -103,6 +101,7 @@ public class ClockPanel extends JPanel {
 
 	}
 
+	@Override
 	public void update(Graphics g) {
 
 		calendar = Calendar.getInstance();
@@ -124,6 +123,14 @@ public class ClockPanel extends JPanel {
 		this.hourX = (int) ((width / 2) + Math.sin(Math.toRadians(hour * 30 + minute * 0.5)) * ((width * 90) / 360));
 
 		this.hourY = (int) ((height / 2) - Math.cos(Math.toRadians(hour * 30 + minute * 0.5)) * ((height * 90) / 360));
+
+		g.setColor(backgroundColor);
+
+		g.fillOval(0, 0, width, height);
+
+		g.setColor(borderColor);
+
+		g.drawOval(0, 0, width, height);
 
 		g.setColor(numberColor);
 
@@ -179,7 +186,7 @@ public class ClockPanel extends JPanel {
 
 		g.drawLine((width / 2), (height / 2), secondX, secondY);
 
-		g.setColor(numberColor);
+		g.setColor(centerColor);
 
 		g.fillOval((width / 2) - 7, (height / 2) - 5, 15, 15);
 

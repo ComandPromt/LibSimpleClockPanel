@@ -43,9 +43,17 @@ public class SimpleClockPanel extends JPanel {
 
 	private float resize;
 
+	private boolean romano;
+
 	public void setNumberColor(Color numberColor) {
 
 		this.numberColor = numberColor;
+
+	}
+
+	public void setRomano(boolean romano) {
+
+		this.romano = romano;
 
 	}
 
@@ -113,6 +121,53 @@ public class SimpleClockPanel extends JPanel {
 
 	}
 
+	private String getRomanNumeral(int number) {
+
+		switch (number) {
+
+		case 1:
+			return "I";
+
+		case 2:
+			return "II";
+
+		case 3:
+			return "III";
+
+		case 4:
+			return "IV";
+
+		case 5:
+			return "V";
+
+		case 6:
+			return "VI";
+
+		case 7:
+			return "VII";
+
+		case 8:
+			return "VIII";
+
+		case 9:
+			return "IX";
+
+		case 10:
+			return "X";
+
+		case 11:
+			return "XI";
+
+		case 12:
+
+		default:
+			return "XII";
+
+		}
+
+	}
+
+	@Override
 	public void update(Graphics g) {
 
 		Graphics2D g2 = (Graphics2D) g;
@@ -141,7 +196,7 @@ public class SimpleClockPanel extends JPanel {
 
 		int wUno = 0;
 
-		resto = (int) (textSize / 6);
+		resto = textSize / 6;
 
 		if (resto >= 4) {
 
@@ -153,55 +208,96 @@ public class SimpleClockPanel extends JPanel {
 
 		g.setColor(numberColor);
 
-		String str = "9";
+		String str;
 
-		g.drawString(str, 5, ((h / 2) + resto) + 4);
+		for (int i = 1; i <= 12; i++) {
 
-		str = "3";
+			str = "" + i;
 
-		g.drawString(str, w - 15, ((h / 2) + resto) + 4);
+			if (romano) {
 
-		str = "6";
+				str = getRomanNumeral(i);
 
-		g.drawString(str, ((w / 2) - resto) - 2, h - 5);
+			}
 
-		str = "12";
+			switch (i) {
 
-		g.drawString(str, ((w / 2) - (resto + ((int) (textSize / 6) + 2))) - 2, textSize);
+			case 1:
 
-		str = "1";
+				wUno = w / 5;
 
-		wUno = w / 5;
+				g.drawString(str, ((w / 2) + wUno) - 3, textSize + w / 15);
 
-		g.drawString(str, ((w / 2) + wUno) - 3, textSize + (int) (w / 15));
+				break;
 
-		str = "11";
+			case 2:
+				g.drawString(str, (w / 2) + wUno + 10, textSize + wUno);
 
-		g.drawString(str, ((w / 2) - (resto + ((int) (textSize / 6) + 2))) - 23, textSize + 7);
+				break;
 
-		str = "10";
+			case 3:
 
-		g.drawString(str, ((w / 2) - (resto + ((int) (textSize / 6) + 2))) - 37, textSize + 22);
+				g.drawString(str, w - 15, ((h / 2) + resto) + 4);
 
-		str = "2";
+				break;
 
-		g.drawString(str, (w / 2) + wUno + 10, textSize + wUno);
+			case 4:
 
-		str = "4";
+				g.drawString(str, w - 20, ((h / 2) + resto) + 25);
 
-		g.drawString(str, w - 20, ((h / 2) + resto) + 25);
+				break;
 
-		str = "5";
+			case 5:
 
-		g.drawString(str, ((w / 2) - resto) + 18, h - 10);
+				g.drawString(str, ((w / 2) - resto) + 18, h - 10);
 
-		str = "7";
+				break;
 
-		g.drawString(str, ((w / 2) - resto) - 21, h - 10);
+			case 6:
 
-		str = "8";
+				g.drawString(str, ((w / 2) - resto) - 2, h - 5);
 
-		g.drawString(str, ((w / 2) - resto) - 38, h - 23);
+				break;
+
+			case 7:
+
+				g.drawString(str, ((w / 2) - resto) - 21, h - 10);
+
+				break;
+
+			case 8:
+
+				g.drawString(str, ((w / 2) - resto) - 38, h - 23);
+
+				break;
+
+			case 9:
+
+				g.drawString(str, 5, ((h / 2) + resto) + 4);
+
+				break;
+
+			case 10:
+
+				g.drawString(str, ((w / 2) - (resto + (textSize / 6 + 2))) - 37, textSize + 22);
+
+				break;
+
+			case 11:
+
+				g.drawString(str, ((w / 2) - (resto + (textSize / 6 + 2))) - 23, textSize + 7);
+
+				break;
+
+			case 12:
+
+				g.drawString(str, ((w / 2) - (resto + (textSize / 6 + 2))) - 2, textSize);
+
+				break;
+
+			}
+
+		}
 
 		g.setColor(hourColor);
 
