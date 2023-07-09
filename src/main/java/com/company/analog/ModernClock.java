@@ -3,7 +3,6 @@ package com.company.analog;
 import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -18,7 +17,7 @@ import javax.swing.JComponent;
 import shadow.ShadowRenderer;
 
 @SuppressWarnings("serial")
-public class Clock extends JComponent {
+public class ModernClock extends JComponent {
 
 	private BufferedImage background;
 
@@ -44,32 +43,77 @@ public class Clock extends JComponent {
 
 	private Color lineMinute2;
 
-	public Clock(Color hourColor1, Color hourColor2, Color minuteColor1, Color minuteColor2, Color secondColor,
-			Color centerColor, Color lineminute1, Color lineminute2) {
+	public void setBackground(BufferedImage background) {
+		this.background = background;
+	}
 
+	public void setTime(ModelTime time) {
+		this.time = time;
+	}
+
+	public void setThread(Thread thread) {
+		this.thread = thread;
+	}
+
+	public void setStart(boolean start) {
+		this.start = start;
+	}
+
+	public void setHourColor1(Color hourColor1) {
 		this.hourColor1 = hourColor1;
+	}
 
+	public void setHourColor2(Color hourColor2) {
 		this.hourColor2 = hourColor2;
+	}
 
+	public void setMinuteColor1(Color minuteColor1) {
 		this.minuteColor1 = minuteColor1;
+	}
 
+	public void setMinuteColor2(Color minuteColor2) {
 		this.minuteColor2 = minuteColor2;
+	}
 
+	public void setSecondColor(Color secondColor) {
 		this.secondColor = secondColor;
+	}
 
+	public void setCenterColor(Color centerColor) {
 		this.centerColor = centerColor;
+	}
 
-		this.lineMinute1 = lineminute1;
+	public void setLineMinute1(Color lineMinute1) {
+		this.lineMinute1 = lineMinute1;
+	}
 
-		this.lineMinute2 = lineminute2;
+	public void setLineMinute2(Color lineMinute2) {
+		this.lineMinute2 = lineMinute2;
+	}
 
-		setPreferredSize(new Dimension(250, 250));
+	public ModernClock() {
 
-		setBackground(Color.gray);
+		this.hourColor1 = Color.MAGENTA;
+
+		this.hourColor2 = Color.BLACK;
+
+		this.minuteColor1 = Color.MAGENTA;
+
+		this.minuteColor2 = Color.BLACK;
+
+		this.secondColor = Color.ORANGE;
+
+		this.centerColor = Color.BLUE;
+
+		this.lineMinute1 = Color.RED;
+
+		this.lineMinute2 = Color.BLACK;
 
 		initTime();
 
 		init();
+
+		setBackground(Color.WHITE);
 
 	}
 
@@ -115,7 +159,7 @@ public class Clock extends JComponent {
 
 		try {
 
-			Thread.sleep(1000);
+			Thread.sleep(500);
 
 		}
 

@@ -1,6 +1,6 @@
 package com.company.analog;
 
-public class ModelTime {
+class ModelTime {
 
 	private int hour;
 

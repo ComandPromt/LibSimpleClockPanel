@@ -29,7 +29,7 @@ public class SimpleClockPanel extends JPanel {
 
 	final int height;
 
-	public Color numberColor;
+	private Color numberColor;
 
 	private Color hourColor;
 
@@ -63,21 +63,21 @@ public class SimpleClockPanel extends JPanel {
 
 	}
 
-	public SimpleClockPanel(float resize, Color hour, Color minute, Color second, Color number, Color background) {
+	public SimpleClockPanel(float resize) {
 
 		this.resize = resize;
 
 		this.textSize = 14;
 
-		this.hourColor = hour;
+		this.hourColor = Color.BLACK;
 
-		this.minuteColor = minute;
+		this.minuteColor = Color.BLACK;
 
-		this.secondsColor = second;
+		this.secondsColor = Color.BLACK;
 
 		this.circleColor = Color.WHITE;
 
-		this.numberColor = number;
+		this.numberColor = Color.BLACK;
 
 		this.width = 100;
 

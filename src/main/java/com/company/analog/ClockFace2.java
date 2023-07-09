@@ -1,4 +1,3 @@
-
 package com.company.analog;
 
 import java.awt.BasicStroke;
@@ -20,7 +19,8 @@ import javax.swing.JComponent;
 import javax.swing.Timer;
 
 @SuppressWarnings("serial")
-public class ClockFace extends JComponent {
+
+public class ClockFace2 extends JComponent {
 
 	private Stroke border;
 
@@ -33,12 +33,6 @@ public class ClockFace extends JComponent {
 	private Stroke ticks;
 
 	private boolean romano;
-
-	private Color hourColor;
-
-	private Color minuteColor;
-
-	private Color secondColor;
 
 	public void setBorder(Stroke border) {
 		this.border = border;
@@ -60,25 +54,7 @@ public class ClockFace extends JComponent {
 		this.ticks = ticks;
 	}
 
-	public void setHourColor(Color hourColor) {
-		this.hourColor = hourColor;
-	}
-
-	public void setMinuteColor(Color minuteColor) {
-		this.minuteColor = minuteColor;
-	}
-
-	public void setSecondColor(Color secondColor) {
-		this.secondColor = secondColor;
-	}
-
-	public ClockFace() {
-
-		this.hourColor = Color.BLACK;
-
-		this.minuteColor = Color.BLACK;
-
-		this.secondColor = Color.BLACK;
+	public ClockFace2() {
 
 		setPreferredSize(new Dimension(150, 150));
 
@@ -160,7 +136,57 @@ public class ClockFace extends JComponent {
 
 	private String getGregorianNumeral(int number) {
 
-		return "" + number;
+		switch (number) {
+
+		case 1:
+
+			return "1";
+
+		case 2:
+
+			return "2";
+
+		case 3:
+
+			return "3";
+
+		case 4:
+
+			return "4";
+
+		case 5:
+
+			return "5";
+
+		case 6:
+
+			return "6";
+
+		case 7:
+
+			return "7";
+
+		case 8:
+
+			return "8";
+
+		case 9:
+
+			return "9";
+
+		case 10:
+
+			return "10";
+
+		case 11:
+
+			return "11";
+
+		default:
+
+			return "12";
+
+		}
 
 	}
 
@@ -177,7 +203,6 @@ public class ClockFace extends JComponent {
 	}
 
 	@Override
-
 	protected void paintComponent(Graphics graphics) {
 
 		paintFace(graphics, Math.min(getWidth(), getHeight()));
@@ -222,6 +247,8 @@ public class ClockFace extends JComponent {
 
 		g.setFont(font.deriveFont(Font.PLAIN, size / 12));
 
+		g.setColor(new Color(0, 0, 0, 128));
+
 		g.setStroke(border);
 
 		g.draw(new Ellipse2D.Float(0, 0, size - 1, size - 1));
@@ -259,7 +286,6 @@ public class ClockFace extends JComponent {
 			Rectangle2D rect = g.getFontMetrics().getStringBounds(str, g);
 
 			g.drawString(str, Math.round(numbers * Math.cos(theta) - rect.getWidth() / 2),
-
 					Math.round(numbers * Math.sin(theta) + margin * 2));
 
 		}
@@ -280,8 +306,6 @@ public class ClockFace extends JComponent {
 
 			if ((i + 15) % 60 == minute) {
 
-				g.setColor(minuteColor);
-
 				g.setStroke(minuteHand);
 
 				g.drawLine(0, 0, radius - margin * 4, 0);
@@ -289,8 +313,6 @@ public class ClockFace extends JComponent {
 			}
 
 			if ((i + 15) % 60 == (hour * 5 + minute * 5 / 60)) {
-
-				g.setColor(hourColor);
 
 				g.setStroke(hourHand);
 
@@ -300,7 +322,7 @@ public class ClockFace extends JComponent {
 
 			if ((i + 15) % 60 == second) {
 
-				g.setColor(secondColor);
+				g.setColor(new Color(255, 0, 0, 128));
 
 				g.setStroke(secondHand);
 

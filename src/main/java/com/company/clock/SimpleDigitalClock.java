@@ -46,7 +46,7 @@ public class SimpleDigitalClock extends JPanel implements Runnable {
 
 		bb = new JLabel();
 
-		bb.setFont(new Font("Arial", Font.BOLD, textSize));
+		bb.setFont(new Font("Tahoma", Font.PLAIN, textSize));
 
 		bb.setOpaque(true);
 

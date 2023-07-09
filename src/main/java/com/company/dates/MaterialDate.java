@@ -14,8 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
-import com.company.MaterialDigitalClock.Language;
-
 @SuppressWarnings("serial")
 public class MaterialDate extends JPanel implements Runnable {
 
@@ -61,11 +59,11 @@ public class MaterialDate extends JPanel implements Runnable {
 
 	public void setFont(String font) {
 
-		diaSemana.setFont(new Font(font, Font.BOLD, size));
+		diaSemana.setFont(new Font(font, Font.PLAIN, size));
 
 	}
 
-	public MaterialDate(Color background, Color foreground, Language language, int textSize) {
+	public MaterialDate(Color background, Color foreground, boolean english, int textSize) {
 
 		this.size = textSize;
 
@@ -73,19 +71,27 @@ public class MaterialDate extends JPanel implements Runnable {
 
 		mes = new JLabel();
 
+		Language language = Language.SPANISH;
+
+		if (english) {
+
+			language = Language.ENGLISH;
+
+		}
+
 		this.idioma = language;
 
 		diaSemana = new JLabel("");
 
 		add(diaSemana);
 
-		mes.setFont(new Font("Tahoma", Font.BOLD, textSize));
+		mes.setFont(new Font("Tahoma", Font.PLAIN, textSize));
 
-		year.setFont(new Font("Tahoma", Font.BOLD, textSize));
+		year.setFont(new Font("Tahoma", Font.PLAIN, textSize));
 
 		textSize *= 2;
 
-		diaSemana.setFont(new Font("Tahoma", Font.BOLD, textSize));
+		diaSemana.setFont(new Font("Tahoma", Font.PLAIN, textSize));
 
 		diaSemana.setBackground(background);
 

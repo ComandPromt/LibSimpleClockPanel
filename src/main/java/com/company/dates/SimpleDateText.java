@@ -26,7 +26,7 @@ public class SimpleDateText extends JPanel implements Runnable {
 
 	public void setFont(String font) {
 
-		date.setFont(new Font(font, Font.BOLD, size));
+		date.setFont(new Font(font, Font.PLAIN, size));
 
 	}
 
@@ -40,7 +40,7 @@ public class SimpleDateText extends JPanel implements Runnable {
 
 		date = new JLabel("");
 
-		date.setFont(new Font("Arial", Font.BOLD, textSize));
+		date.setFont(new Font("Arial", Font.PLAIN, textSize));
 
 		date.setOpaque(true);
 

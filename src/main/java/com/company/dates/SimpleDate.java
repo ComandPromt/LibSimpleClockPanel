@@ -25,7 +25,7 @@ public class SimpleDate extends JPanel implements Runnable {
 
 	public void setFont(String font) {
 
-		date.setFont(new Font(font, Font.BOLD, size));
+		date.setFont(new Font(font, Font.PLAIN, size));
 
 	}
 

@@ -12,8 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
-import com.company.MaterialDigitalClock.Language;
-
 @SuppressWarnings("serial")
 public class TextClock extends JPanel implements Runnable {
 
@@ -41,11 +39,19 @@ public class TextClock extends JPanel implements Runnable {
 
 	}
 
-	public TextClock(Color background, Color foreground, Language language, int textSize) {
+	public TextClock(Color background, Color foreground, boolean english, int textSize) {
 
 		dia = new JLabel("");
 
 		minuto = new JLabel("");
+
+		Language language = Language.SPANISH;
+
+		if (english) {
+
+			language = Language.ENGLISH;
+
+		}
 
 		this.idioma = language;
 
@@ -73,7 +79,7 @@ public class TextClock extends JPanel implements Runnable {
 
 		panel_1.add(minuto);
 
-		pm.setFont(new Font("Tahoma", Font.BOLD, textSize));
+		pm.setFont(new Font("Tahoma", Font.PLAIN, textSize));
 
 		panel_1.add(pm);
 
@@ -89,21 +95,21 @@ public class TextClock extends JPanel implements Runnable {
 
 		panel.add(panel_2);
 
-		mes.setFont(new Font("Tahoma", Font.BOLD, textSize));
+		mes.setFont(new Font("Tahoma", Font.PLAIN, textSize));
 
 		panel_2.add(mes);
 
-		dia.setFont(new Font("Tahoma", Font.BOLD, textSize));
+		dia.setFont(new Font("Tahoma", Font.PLAIN, textSize));
 
 		panel_2.add(dia);
 
 		textSize *= 2;
 
-		hour.setFont(new Font("Tahoma", Font.BOLD, textSize));
+		hour.setFont(new Font("Tahoma", Font.PLAIN, textSize));
 
 		textSize -= textSize / 3;
 
-		minuto.setFont(new Font("Tahoma", Font.BOLD, textSize));
+		minuto.setFont(new Font("Tahoma", Font.PLAIN, textSize));
 
 		panel.setBackground(background);
 
