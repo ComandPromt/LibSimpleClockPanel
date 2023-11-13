@@ -1,3 +1,4 @@
+[Descargar](https://github.com/ComandPromt/LibSimpleClockPanel/releases/download/v3.5/LibSimpleClockPanel_v_3_5.jar)
 
 # ClockFace
 
@@ -86,5 +87,3 @@
 ![Preview](previews/2.gif)
 
 ![Preview](previews/3.gif)
-
-
