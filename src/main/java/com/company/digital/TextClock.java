@@ -1,4 +1,4 @@
-package com.company.clock;
+package com.company.digital;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -31,11 +31,31 @@ public class TextClock extends JPanel implements Runnable {
 
 	JLabel minuto;
 
+	private boolean formato24Horas;
+
 	private JSeparator separator_1;
+
+	public boolean isFormato24Horas() {
+
+		return formato24Horas;
+
+	}
+
+	public void setFormato24Horas(boolean formato24Horas) {
+
+		this.formato24Horas = formato24Horas;
+
+	}
 
 	public void setBorderColor(Color color) {
 
 		setBackground(color);
+
+	}
+
+	public TextClock() {
+
+		this(Color.WHITE, Color.BLACK, false, 20);
 
 	}
 
@@ -167,15 +187,32 @@ public class TextClock extends JPanel implements Runnable {
 
 			hora = formatter.format(date);
 
-			if (hora.contains("p")) {
+			if (formato24Horas) {
 
-				pm.setText("pm");
+				pm.setText("");
+
+				if (hora.contains("p")) {
+
+					hora = Integer.toString(12 + Integer.parseInt(hora.substring(0, hora.indexOf(":"))))
+							+ hora.substring(hora.indexOf(":"), hora.length());
+
+				}
 
 			}
 
 			else {
 
-				pm.setText("am");
+				if (hora.contains("p")) {
+
+					pm.setText("pm");
+
+				}
+
+				else {
+
+					pm.setText("am");
+
+				}
 
 			}
 

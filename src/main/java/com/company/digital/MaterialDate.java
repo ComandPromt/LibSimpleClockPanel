@@ -1,4 +1,4 @@
-package com.company.dates;
+package com.company.digital;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -60,6 +60,12 @@ public class MaterialDate extends JPanel implements Runnable {
 	public void setFont(String font) {
 
 		diaSemana.setFont(new Font(font, Font.PLAIN, size));
+
+	}
+
+	public MaterialDate() {
+
+		this(Color.WHITE, Color.BLACK, false, 20);
 
 	}
 

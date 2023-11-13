@@ -1,4 +1,4 @@
-package com.company.dates;
+package com.company.digital;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -22,7 +22,7 @@ public class TextDate extends JPanel implements Runnable {
 
 	String textoMes;
 
-	String hora = "";
+	String hora;
 
 	Language idioma;
 
@@ -68,6 +68,12 @@ public class TextDate extends JPanel implements Runnable {
 
 	}
 
+	public TextDate() {
+
+		this(Color.WHITE, Color.BLACK, false, 20);
+
+	}
+
 	public TextDate(Color background, Color foreground, boolean english, int textSize) {
 
 		this.size = textSize;
@@ -98,13 +104,13 @@ public class TextDate extends JPanel implements Runnable {
 
 		add(diaSemana);
 
-		dia.setFont(new Font("Tahoma", Font.PLAIN, textSize));
+		dia.setFont(new Font("Dialog", Font.PLAIN, textSize));
 
-		mes.setFont(new Font("Tahoma", Font.PLAIN, textSize));
+		mes.setFont(new Font("Dialog", Font.PLAIN, textSize));
 
 		textSize += 5;
 
-		diaSemana.setFont(new Font("Tahoma", Font.PLAIN, textSize));
+		diaSemana.setFont(new Font("Dialog", Font.PLAIN, textSize));
 
 		diaSemana.setBackground(background);
 
@@ -177,7 +183,7 @@ public class TextDate extends JPanel implements Runnable {
 
 			}
 
-			diaSemana.setText(dow.getDisplayName(TextStyle.FULL, l));
+			diaSemana.setText(dow.getDisplayName(TextStyle.FULL, l) + " ");
 
 			dia.setText("" + now.get(Calendar.DAY_OF_MONTH));
 
@@ -192,6 +198,7 @@ public class TextDate extends JPanel implements Runnable {
 				mes.setText("" + month);
 
 			}
+
 		}
 
 	}

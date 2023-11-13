@@ -1,4 +1,4 @@
-package com.company.dates;
+package com.company.digital;
 
 enum Language {
 

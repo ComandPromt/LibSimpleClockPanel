@@ -21,11 +21,11 @@ public class ModernClock extends JComponent {
 
 	private BufferedImage background;
 
-	private ModelTime time = new ModelTime();
+	private ModelTime time;
 
 	private Thread thread;
 
-	private boolean start = true;
+	private boolean start;
 
 	private Color hourColor1;
 
@@ -44,70 +44,98 @@ public class ModernClock extends JComponent {
 	private Color lineMinute2;
 
 	public void setBackground(BufferedImage background) {
+
 		this.background = background;
+
 	}
 
 	public void setTime(ModelTime time) {
+
 		this.time = time;
+
 	}
 
 	public void setThread(Thread thread) {
+
 		this.thread = thread;
+
 	}
 
 	public void setStart(boolean start) {
+
 		this.start = start;
+
 	}
 
 	public void setHourColor1(Color hourColor1) {
+
 		this.hourColor1 = hourColor1;
+
 	}
 
 	public void setHourColor2(Color hourColor2) {
+
 		this.hourColor2 = hourColor2;
+
 	}
 
 	public void setMinuteColor1(Color minuteColor1) {
+
 		this.minuteColor1 = minuteColor1;
+
 	}
 
 	public void setMinuteColor2(Color minuteColor2) {
+
 		this.minuteColor2 = minuteColor2;
+
 	}
 
 	public void setSecondColor(Color secondColor) {
+
 		this.secondColor = secondColor;
+
 	}
 
 	public void setCenterColor(Color centerColor) {
+
 		this.centerColor = centerColor;
+
 	}
 
 	public void setLineMinute1(Color lineMinute1) {
+
 		this.lineMinute1 = lineMinute1;
+
 	}
 
 	public void setLineMinute2(Color lineMinute2) {
+
 		this.lineMinute2 = lineMinute2;
+
 	}
 
 	public ModernClock() {
 
-		this.hourColor1 = Color.MAGENTA;
+		time = new ModelTime();
 
-		this.hourColor2 = Color.BLACK;
+		start = true;
 
-		this.minuteColor1 = Color.MAGENTA;
+		this.hourColor1 = Color.ORANGE;
 
-		this.minuteColor2 = Color.BLACK;
+		this.hourColor2 = Color.BLUE;
 
-		this.secondColor = Color.ORANGE;
+		this.minuteColor1 = Color.ORANGE;
 
-		this.centerColor = Color.BLUE;
+		this.minuteColor2 = Color.BLUE;
 
-		this.lineMinute1 = Color.RED;
+		this.secondColor = Color.WHITE;
 
-		this.lineMinute2 = Color.BLACK;
+		this.centerColor = Color.GRAY;
+
+		this.lineMinute1 = Color.BLACK;
+
+		this.lineMinute2 = Color.RED;
 
 		initTime();
 
@@ -443,7 +471,6 @@ public class ModernClock extends JComponent {
 	}
 
 	@Override
-
 	public void setBounds(int i, int i1, int i2, int i3) {
 
 		super.setBounds(i, i1, i2, i3);

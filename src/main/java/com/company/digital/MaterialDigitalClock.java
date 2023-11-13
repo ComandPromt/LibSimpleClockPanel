@@ -1,13 +1,8 @@
-package com.company.clock;
+package com.company.digital;
 
 import java.awt.Color;
 
 import javax.swing.JPanel;
-
-import com.company.dates.MaterialDate;
-import com.company.dates.SimpleDate;
-import com.company.dates.SimpleDateText;
-import com.company.dates.TextDate;
 
 @SuppressWarnings("serial")
 
@@ -16,6 +11,18 @@ public class MaterialDigitalClock extends JPanel {
 	public enum Language {
 
 		ENGLISH, SPANISH;
+
+	}
+
+	public MaterialDigitalClock() {
+
+		this(Color.WHITE, Color.BLACK, 20, false, 2);
+
+	}
+
+	public MaterialDigitalClock(int type) {
+
+		this(Color.WHITE, Color.BLACK, 20, false, type);
 
 	}
 

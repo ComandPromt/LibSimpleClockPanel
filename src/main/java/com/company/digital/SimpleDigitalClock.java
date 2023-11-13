@@ -1,8 +1,7 @@
-package com.company.clock;
+package com.company.digital;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,6 +16,20 @@ public class SimpleDigitalClock extends JPanel implements Runnable {
 	private JLabel bb = new JLabel();
 
 	private String timeString = "";
+
+	private boolean formato24Horas;
+
+	public boolean isFormato24Horas() {
+
+		return formato24Horas;
+
+	}
+
+	public void setFormato24Horas(boolean formato24Horas) {
+
+		this.formato24Horas = formato24Horas;
+
+	}
 
 	@Override
 	public void setFont(Font font) {
@@ -37,6 +50,12 @@ public class SimpleDigitalClock extends JPanel implements Runnable {
 	public void setBorderColor(Color color) {
 
 		setBackground(color);
+
+	}
+
+	public SimpleDigitalClock() {
+
+		this(Color.WHITE, Color.BLACK, 20);
 
 	}
 
@@ -72,7 +91,7 @@ public class SimpleDigitalClock extends JPanel implements Runnable {
 
 				Calendar cal = Calendar.getInstance();
 
-				SimpleDateFormat formatter = new SimpleDateFormat(" hh : mm : ss aa ");
+				SimpleDateFormat formatter = new SimpleDateFormat("hh : mm : ss aa");
 
 				Date date = cal.getTime();
 
@@ -85,31 +104,50 @@ public class SimpleDigitalClock extends JPanel implements Runnable {
 		}
 
 		catch (Exception e) {
-
+			e.printStackTrace();
 		}
 
 	}
 
 	public void printTime() {
 
-		if (timeString.contains("p")) {
+		if (formato24Horas) {
 
-			timeString = timeString.replace("p. m.", "pm");
+			if (timeString.contains("p")) {
+
+				timeString = Integer.toString(12 + Integer.parseInt(timeString.substring(0, timeString.indexOf(" "))))
+						+ timeString.substring(timeString.indexOf(" "), timeString.length());
+
+			}
+
+			else {
+
+				timeString = Integer.toString(Integer.parseInt(timeString.substring(0, timeString.indexOf(" "))))
+						+ timeString.substring(timeString.indexOf(" "), timeString.length());
+
+			}
+
+			timeString = timeString.substring(0, timeString.lastIndexOf(" "));
 
 		}
 
 		else {
 
-			timeString = timeString.replace("a. m.", "am");
+			if (timeString.contains("p")) {
+
+				timeString = timeString.replace("p.Â m.", "pm");
+
+			}
+
+			else {
+
+				timeString = timeString.replace("a.Â m.", "am");
+
+			}
 
 		}
 
 		bb.setText(timeString);
-
-	}
-
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 

@@ -15,12 +15,12 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Calendar;
 
-import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 
-public class ClockFace2 extends JComponent {
+public class ClockFace2 extends JPanel {
 
 	private Stroke border;
 
@@ -34,27 +34,94 @@ public class ClockFace2 extends JComponent {
 
 	private boolean romano;
 
+	private Color hourColor;
+
+	private Color minuteColor;
+
+	private Color secondColor;
+
+	private Color lineas;
+
+	private Color fondo;
+
+	public Color getFondo() {
+
+		return fondo;
+	}
+
+	public void setFondo(Color fondo) {
+
+		this.fondo = fondo;
+
+	}
+
+	public void setLineas(Color lineas) {
+
+		this.lineas = lineas;
+
+	}
+
+	public void setHourColor(Color hourColor) {
+
+		this.hourColor = hourColor;
+
+	}
+
+	public void setMinuteColor(Color minuteColor) {
+
+		this.minuteColor = minuteColor;
+
+	}
+
+	public void setSecondColor(Color secondColor) {
+
+		this.secondColor = secondColor;
+
+	}
+
 	public void setBorder(Stroke border) {
+
 		this.border = border;
+
 	}
 
 	public void setSecondHand(Stroke secondHand) {
+
 		this.secondHand = secondHand;
+
 	}
 
 	public void setMinuteHand(Stroke minuteHand) {
+
 		this.minuteHand = minuteHand;
+
 	}
 
 	public void setHourHand(Stroke hourHand) {
+
 		this.hourHand = hourHand;
+
 	}
 
 	public void setTicks(Stroke ticks) {
+
 		this.ticks = ticks;
+
 	}
 
 	public ClockFace2() {
+
+		setBackground(Color.WHITE);
+
+		fondo = Color.WHITE;
+
+		this.lineas = Color.BLACK;
+
+		this.hourColor = Color.GRAY;
+
+		this.minuteColor = Color.GRAY;
+
+		this.secondColor = Color.BLACK;
 
 		setPreferredSize(new Dimension(150, 150));
 
@@ -231,6 +298,10 @@ public class ClockFace2 extends JComponent {
 
 		Graphics2D g = (Graphics2D) graphics.create();
 
+		g.setColor(fondo);
+
+		g.fillRect(0, 0, getWidth(), getHeight());
+
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
@@ -296,6 +367,8 @@ public class ClockFace2 extends JComponent {
 
 			g.setStroke(ticks);
 
+			g.setColor(lineas);
+
 			g.drawLine(radius - margin * 2, 0, radius - margin, 0);
 
 			if ((i % 5) == 0) {
@@ -308,6 +381,8 @@ public class ClockFace2 extends JComponent {
 
 				g.setStroke(minuteHand);
 
+				g.setColor(minuteColor);
+
 				g.drawLine(0, 0, radius - margin * 4, 0);
 
 			}
@@ -315,6 +390,8 @@ public class ClockFace2 extends JComponent {
 			if ((i + 15) % 60 == (hour * 5 + minute * 5 / 60)) {
 
 				g.setStroke(hourHand);
+
+				g.setColor(hourColor);
 
 				g.drawLine(0, 0, radius / 2, 0);
 
@@ -325,6 +402,8 @@ public class ClockFace2 extends JComponent {
 				g.setColor(new Color(255, 0, 0, 128));
 
 				g.setStroke(secondHand);
+
+				g.setColor(secondColor);
 
 				g.drawLine(0, 0, radius - margin * 4, 0);
 

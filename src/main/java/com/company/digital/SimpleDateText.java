@@ -1,7 +1,8 @@
-package com.company.dates;
+package com.company.digital;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.swing.JLabel;
@@ -9,11 +10,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
-public class SimpleDate extends JPanel implements Runnable {
+public class SimpleDateText extends JPanel implements Runnable {
 
 	JLabel date;
 
-	Calendar now;
+	SimpleDateFormat dateFormat;
 
 	int size;
 
@@ -23,15 +24,25 @@ public class SimpleDate extends JPanel implements Runnable {
 
 	}
 
-	public void setFont(String font) {
+	public void setFont(String font, int size) {
+
+		this.size = size;
 
 		date.setFont(new Font(font, Font.PLAIN, size));
 
 	}
 
-	public SimpleDate(Color background, Color foreground, int textSize) {
+	public SimpleDateText() {
+
+		this(Color.WHITE, Color.BLACK, 20);
+
+	}
+
+	public SimpleDateText(Color background, Color foreground, int textSize) {
 
 		this.size = textSize;
+
+		dateFormat = new SimpleDateFormat(" dd - MMM - y ");
 
 		setBackground(background);
 
@@ -52,21 +63,14 @@ public class SimpleDate extends JPanel implements Runnable {
 		add(date);
 
 		new Thread(this).start();
+
 	}
 
 	public void run() {
 
 		while (true) {
 
-			now = Calendar.getInstance();
-
-			int month = now.get(Calendar.MONTH);
-
-			int day = now.get(Calendar.DAY_OF_MONTH);
-
-			int year = now.get(Calendar.YEAR);
-
-			date.setText(" " + day + " / " + (month + 1) + " / " + year + " ");
+			date.setText(dateFormat.format(Calendar.getInstance().getTime()));
 
 		}
 

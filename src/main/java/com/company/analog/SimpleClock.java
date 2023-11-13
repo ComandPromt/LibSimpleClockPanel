@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 @SuppressWarnings("serial")
-public class SimpleClockPanel extends JPanel {
+public class SimpleClock extends JPanel {
 
 	private Calendar calendar;
 
@@ -63,7 +63,13 @@ public class SimpleClockPanel extends JPanel {
 
 	}
 
-	public SimpleClockPanel(float resize) {
+	public SimpleClock() {
+
+		this(2f);
+
+	}
+
+	public SimpleClock(float resize) {
 
 		this.resize = resize;
 

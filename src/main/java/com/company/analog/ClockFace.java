@@ -16,11 +16,11 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Calendar;
 
-import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 
 @SuppressWarnings("serial")
-public class ClockFace extends JComponent {
+public class ClockFace extends JPanel {
 
 	private Stroke border;
 
@@ -40,43 +40,76 @@ public class ClockFace extends JComponent {
 
 	private Color secondColor;
 
+	private Color fondo;
+
+	public Color getFondo() {
+
+		return fondo;
+	}
+
+	public void setFondo(Color fondo) {
+
+		this.fondo = fondo;
+
+	}
+
 	public void setBorder(Stroke border) {
+
 		this.border = border;
+
 	}
 
 	public void setSecondHand(Stroke secondHand) {
+
 		this.secondHand = secondHand;
+
 	}
 
 	public void setMinuteHand(Stroke minuteHand) {
+
 		this.minuteHand = minuteHand;
+
 	}
 
 	public void setHourHand(Stroke hourHand) {
+
 		this.hourHand = hourHand;
+
 	}
 
 	public void setTicks(Stroke ticks) {
+
 		this.ticks = ticks;
+
 	}
 
 	public void setHourColor(Color hourColor) {
+
 		this.hourColor = hourColor;
+
 	}
 
 	public void setMinuteColor(Color minuteColor) {
+
 		this.minuteColor = minuteColor;
+
 	}
 
 	public void setSecondColor(Color secondColor) {
+
 		this.secondColor = secondColor;
+
 	}
 
 	public ClockFace() {
 
-		this.hourColor = Color.BLACK;
+		setBackground(Color.WHITE);
 
-		this.minuteColor = Color.BLACK;
+		fondo = Color.WHITE;
+
+		this.hourColor = Color.GRAY;
+
+		this.minuteColor = Color.GRAY;
 
 		this.secondColor = Color.BLACK;
 
@@ -205,6 +238,10 @@ public class ClockFace extends JComponent {
 		ticks = new BasicStroke(1f);
 
 		Graphics2D g = (Graphics2D) graphics.create();
+
+		g.setColor(fondo);
+
+		g.fillRect(0, 0, getWidth(), getHeight());
 
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
